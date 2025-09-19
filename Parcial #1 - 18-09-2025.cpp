@@ -1,4 +1,3 @@
-// Integrantes: Juan Francisco Correa Benítez - Sergio Montaña
 #include <iostream>
 #include <cmath>
 #include <cctype>
@@ -10,8 +9,7 @@ struct Point {
 };
 
 double calcularMagnitud(const Point& p) {
-    double magnitud=std::sqrt(std::pow(p.x, 2) + std::pow(p.y, 2));
-    return magnitud;
+    return std::sqrt(std::pow(p.x, 2) + std::pow(p.y, 2));
 }
 
 void leerPuntos(std::vector<Point>& puntos, int n) {
@@ -28,11 +26,12 @@ void leerPuntos(std::vector<Point>& puntos, int n) {
             std::cin >> puntos[i].y;
         }
     } else {
-        Point Vector[] = { {0, 0}, {3, 4}, {6, 8}, {9, 12} };
-        int VectorSize = sizeof(Vector) / sizeof(Vector[0]);
+        std::cout << "Usando vectores predeterminados...\n";
+        Point defaults[] = { {0, 0}, {3, 4}, {6, 8}, {9, 12} };
+        int tam = sizeof(defaults) / sizeof(defaults[0]);
 
         for (int i = 0; i < n; i++) {
-            puntos[i] = Vector[i % VectorSize];
+            puntos[i] = defaults[i % tam];
         }
     }
 }
@@ -41,7 +40,7 @@ double calcularMasCercano(const Point& referencia, const std::vector<Point>& pun
     double menorDistancia = std::numeric_limits<double>::max();
     indiceCercano = 0;
 
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++) {   
         double distancia = std::sqrt(std::pow(puntos[i].x - referencia.x, 2) +
                                      std::pow(puntos[i].y - referencia.y, 2));
         if (distancia < menorDistancia) {
@@ -71,9 +70,9 @@ int main() {
     if (std::tolower(respuesta) == 's') {
         std::cout << "¿Cuántos vectores desea ingresar? ";
         std::cin >> n;
-        } else {
-        n = 4;
-        }
+    } else {
+        n = 4; 
+    }
 
     std::vector<Point> puntos(n);
     leerPuntos(puntos, n);
