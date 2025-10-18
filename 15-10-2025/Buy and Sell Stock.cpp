@@ -9,7 +9,21 @@ void fx (vector<int>Prices) {
     int Max=*max_element(Prices.begin(),Prices.end());      // Se busca el valor máximo y mínimo del vector
     int Min=*min_element(Prices.begin(),Prices.end());
     int cycle=0, cycle1=0, cycle2=0, Buy=0, Sell=0;
+    vector<int> Profit;
+    vector<int> Day1;                                       // Día para comprar
+    vector<int> Day2;                                       // Día para vender
     for (int x=0;x<Prices.size();x++) {                     // Ciclo para hallar la posición del valor máximo y mínimo dentro del vector
+        // CODE FROM OCTOBER 18
+        for (int y=0;y<Prices.size();y++) {
+            if (((Prices[y]-Prices[x])>Prices[x]) && y>x) {
+                Profit.push_back(Prices[y]-Prices[x]);      // Rentabilidad entre dos días dados
+                Day1.push_back(x);                          // Día de menor precio
+                Day2.push_back(y);                          // Día de mayor precio
+            }
+        }
+        // CODE FROM OCTOBER 18
+
+        /*
         if ((Prices[x]==Min && Max!=Min) && cycle1==0) {
             Buy+=(x+1);
             cycle+=1;
@@ -23,9 +37,44 @@ void fx (vector<int>Prices) {
         else if (cycle==2) {
             break;
         }
+        */
     }
+    // CODE FROM OCTOBER 18
+    int max=*max_element(Profit.begin(),Profit.end());
+    int min=*min_element(Profit.begin(),Profit.end());
+    for (int x=0;x<Profit.size();x++) {
+        if (Profit[x]==max) {
+            Buy=Day1[x]+1;
+        }
+        else if (Profit[x]==min) {
+            Sell=Day2[x]+1;
+        }
+    }
+
+      // FOR TROUBLESHOOTING
+    cout<<"Profit: [";
+    for (int x=0;x<Profit.size();x++) {
+        cout<<Profit[x]<<" ";
+    }
+    cout<<"]"<<endl;
+
+    cout<<"Day1: [";
+    for (int x=0;x<Day1.size();x++) {
+        cout<<Day1[x]<<" ";
+    }
+    cout<<"]"<<endl;
+
+    cout<<"Day2: [";
+    for (int x=0;x<Day2.size();x++) {
+        cout<<Day2[x]<<" ";
+    }
+    cout<<endl;
+      // FOR TROUBLESHOOTING
+    // CODE FROM OCTOBER 18
+    
     cout<<"Buy: "<<Buy<<endl;
     cout<<"Sell: "<<Sell<<endl;
+    
     if (Sell>Buy) {                                         // Se imprimen los dos casos posibles
         cout<<"Compre acciones el día "<<Buy<<endl;
         cout<<"Venda acciones el día "<<Sell<<endl;
