@@ -2,7 +2,6 @@
 #include <cmath>
 #include <vector>
 #include <string>
-#include <cstdlib>
 using namespace std;
 
 void fx (string columntitle) {
