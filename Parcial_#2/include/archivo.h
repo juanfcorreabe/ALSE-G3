@@ -1,31 +1,35 @@
+// * @author Juan Francisco Correa
+// * @author Sergio Andrés Montaña
+// * @date 30 de octubre de 2025
 #ifndef Archivo_h
 #define Archivo_h
 #include <iostream>
 #include <string>
 #include <vector>
+
 class DispositivoInteligente {
+    // * @brief Se declaran los atributos de la clase
     private:
     std::string nombre;
     bool estado;
     bool bloqueado;
     float consumoEnergia;
     public:
+    // * @brief Estos vectores almacenan la información de cada dispositivo
     std::vector<std::string>name;
     std::vector<float>usage;
     std::vector<bool>state;
     std::vector<bool>blocked;
+    // * @brief Se declara el constructor
     DispositivoInteligente (std::string n, bool e, bool b, float c) : nombre(n), estado(e), bloqueado (b), consumoEnergia(c) {}
+    // * @brief Esta función asigna los valores de los dispositivos predeterminados a cada vector
     void Default () {
         name={"Lavadora","Impresora"};
         usage={0,34.52};
         state={false,true};
         blocked={true,false};
-        /*
-        for (int x=0;x<name.size();x++) {
-            std::cout<<"Name : "<<name[x]<<std::endl;
-        } 
-        */
     }
+    // * @brief Esta función asigna a cada vector los valores
     void Input () {
         int n;
         std::string name1;
@@ -60,8 +64,9 @@ class DispositivoInteligente {
             }
         }    
     }
-    
+    // * @brief "disp" es utilizado como parámetro de la mayoría de funciones, esto después de invocar la función device
     int disp;
+    // * @brief Esta función escoge el dispositivo
     int device () {
         std::cout<<"Escoja el dispositivo para visualizar (1 o 2)"<<std::endl;
         std::cin>>disp;
@@ -72,6 +77,7 @@ class DispositivoInteligente {
         }
         return (disp-1);
     }
+    // * @brief Esta función enciende el dispositivo
     void encender (int d) {
         d=disp;
         bool encendido;
@@ -84,6 +90,7 @@ class DispositivoInteligente {
         }
         state[d]=estado;
     }
+    // * @brief Esta función apaga el dispositivo
     void apagar (int d) {
         d=disp;
         bool apagado;
@@ -101,15 +108,17 @@ class DispositivoInteligente {
 
         return consumo;
     }
+    // * @brief Esta función bloquea el control remoto
     void bloquearControlRemoto (bool bloqueado, int d) {
         d=disp;
         blocked[d]=true;
     }
+    // * @brief 
     void desbloquearControlRemoto (bool bloqueado, int d) {
         d=disp;
         blocked[d]=false;
     }
-
+    // * @brief Esta función le muestra al usuario la información de cada dispositivo
     void Print (int d) {
         d=disp;
         std::cout<<"Nombre: "<<name[d]<<std::endl;
@@ -127,6 +136,7 @@ class DispositivoInteligente {
         std::cout<<"Control Remoto: Desbloqueado"<<std::endl;
         }
     }
-
+    // * @brief Se invoca al destructor
+    ~DispositivoInteligente();
 };
 #endif
