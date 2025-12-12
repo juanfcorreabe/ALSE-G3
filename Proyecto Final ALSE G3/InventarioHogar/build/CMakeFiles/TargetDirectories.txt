@@ -1,0 +1,4 @@
+/mnt/c/Users/Lenovo/Documents/Development/Proyecto Final ALSE G3/InventarioHogar/build/CMakeFiles/inventario.dir
+/mnt/c/Users/Lenovo/Documents/Development/Proyecto Final ALSE G3/InventarioHogar/build/CMakeFiles/edit_cache.dir
+/mnt/c/Users/Lenovo/Documents/Development/Proyecto Final ALSE G3/InventarioHogar/build/CMakeFiles/rebuild_cache.dir
+/mnt/c/Users/Lenovo/Documents/Development/Proyecto Final ALSE G3/InventarioHogar/build/CMakeFiles/inventario_autogen.dir
